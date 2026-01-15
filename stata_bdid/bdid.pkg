@@ -3,4 +3,6 @@ d Stata front-end for the R package bdid (Bayesian DiD)
 
 f bdid_fgls.ado
 f bdid_fgls.sthlp
+f bdid_plot.ado
+f bdid_plot.sthlp
 f data/mpdta.dta
