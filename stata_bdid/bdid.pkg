@@ -1,0 +1,4 @@
+v 1.0
+d bdid_fgls: Stata front-end that calls the R package bdid (Bayesian DiD)
+f bdid_fgls.ado
+f bdid_fgls.sthlp
