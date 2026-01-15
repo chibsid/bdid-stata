@@ -111,6 +111,18 @@ Preserve the original dataset:
 {cmd:. list, clean}
 {cmd:. restore}
 
+{title:Example dataset}
+
+{p 4 4 2}
+The package installs an example dataset {bf:mpdta.dta} illustrating
+staggered treatment adoption.
+
+{p 8 8 2}
+To load it:
+{cmd:. use c:\ado\plus\b\data\mpdta.dta, clear}
+{cmd:. bdid_fgls}
+
+
 {title:Citation}
 
 {p 4 4 2}
