@@ -14,10 +14,20 @@ confidence bands in Stata.
 
 1. **Stata** (tested with Stata 15+)
 2. **R** installed (so `Rscript` is available)
-3. The **R package `bdid`** installed in R
+3. The **R package `bdid`** installed in R  
+   (available from: https://siddharthachib.org/rpackages/bdid/)
 
 > This repository contains only the **Stata wrapper**. All estimation is
 > performed by the R package `bdid`.
+
+---
+
+## Install the R package `bdid`
+
+The Stata wrapper calls the R function `bdid::bdid_stata()`, so the R package
+`bdid` must be installed first. The package is available here:
+
+https://siddharthachib.org/rpackages/bdid/
 
 ---
 
@@ -167,11 +177,3 @@ If you use this software, please cite:
 Chib, S. and Shimizu, K. (2026).
 *Potential Outcome Modeling and Estimation in Difference-in-Differences Designs
 with Staggered Treatments*.
-
----
-
-## License
-
-MIT License (Stata wrapper).
-
-The R package **bdid** is distributed under its own license.
