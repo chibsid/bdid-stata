@@ -5,6 +5,9 @@ This wrapper provides the Stata command `bdid_fgls`, which exports the current
 Stata dataset to CSV, calls `Rscript` to run `bdid::bdid_stata()`, and then
 imports the resulting **ATT table** back into Stata.
 
+The package also provides `bdid_plot`, which plots the ATT estimates with
+confidence bands in Stata.
+
 ---
 
 ## Requirements
@@ -23,12 +26,14 @@ imports the resulting **ATT table** back into Stata.
 ```stata
 net install bdid, from("https://chibsid.github.io/bdid-stata/stata_bdid") replace
 help bdid_fgls
+help bdid_plot
 ```
 
 Verify installation:
 
 ```stata
 which bdid_fgls
+which bdid_plot
 ```
 
 ---
@@ -36,9 +41,9 @@ which bdid_fgls
 ## Quick start (example dataset)
 
 The package installs an example dataset illustrating staggered treatment
-adoption.
+adoption: `mpdta.dta`.
 
-On Windows, it will typically be located at:
+On Windows, it is typically located under Stata's PLUS directory, e.g.
 
 ```
 c:\ado\plus\b\data\mpdta.dta
@@ -50,6 +55,7 @@ Run:
 use c:\ado\plus\b\data\mpdta.dta, clear
 bdid_fgls
 list, clean
+bdid_plot
 ```
 
 ---
@@ -60,9 +66,10 @@ list, clean
 To return to the original dataset afterward:
 
 ```stata
+use c:\ado\plus\b\data\mpdta.dta, clear
 preserve
 bdid_fgls
-list, clean
+bdid_plot
 restore
 ```
 
@@ -83,12 +90,14 @@ Basic usage with defaults:
 ```stata
 use mypanel.dta, clear
 bdid_fgls
+bdid_plot
 ```
 
 Specify variables explicitly:
 
 ```stata
 bdid_fgls, id(countyreal) time(year) y(lemp) first(first_treat) w(lpop) level(0.95)
+bdid_plot
 ```
 
 Multiple covariates (space- or comma-separated):
@@ -122,6 +131,8 @@ bdid_fgls, rscript("/usr/local/bin/Rscript")
 
 ## Output
 
+### `bdid_fgls`
+
 After execution, the dataset in memory becomes the ATT table with variables:
 
 - `s`     — cohort index
@@ -130,6 +141,22 @@ After execution, the dataset in memory becomes the ATT table with variables:
 - `se`    — standard error
 - `lower` — lower confidence bound
 - `upper` — upper confidence bound
+
+### `bdid_plot`
+
+`bdid_plot` expects the ATT table produced by `bdid_fgls` to be in memory and
+produces a Stata graph with:
+
+- horizontal axis: `t`
+- vertical axis: `est`
+- confidence band: `[lower, upper]`
+- separate panels by cohort `s`
+
+To save the plot:
+
+```stata
+bdid_plot, saving("att_plot.png") replace
+```
 
 ---
 
