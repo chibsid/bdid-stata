@@ -1,0 +1,1 @@
+bdid: Stata front-end for the R package bdid (Bayesian DiD)
