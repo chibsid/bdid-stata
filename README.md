@@ -56,7 +56,9 @@ adoption: `mpdta.dta`.
 On Windows, it is typically located under Stata's PLUS directory, e.g.
 
 ```
-c:\ado\plus\b\data\mpdta.dta
+findfile mpdta.dta
+use "`r(fn)'", clear
+
 ```
 
 Run:
