@@ -59,6 +59,7 @@ On Windows, it is typically located under Stata's PLUS directory, e.g.
 findfile mpdta.dta
 use "`r(fn)'", clear
 
+
 ```
 
 Run:
